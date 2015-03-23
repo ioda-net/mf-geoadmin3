@@ -723,110 +723,72 @@
 
         // TODO Remove me
         var addGeojsonLayer = function(layers) {
-          var basePath;
-          var origin = location.origin;
-          var pathname = location.pathname;
-
-          if (pathname !== '/') {
-            basePath = origin + '/' + pathname.split('/')[1];
-          } else {
-            basePath = origin;
-          }
           if (layers.hasOwnProperty('ch.bafu' +
               '.hydroweb-messstationen_temperatur')) {
             angular.extend(layers['ch.bafu' +
                 '.hydroweb-messstationen_temperatur'], {
-              geojsonUrl: basePath + '/src/components/map/temp/' +
-                  'ch.bafu.hydroweb-messstationen_temperatur.json',
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              chargeable: false,
-              timestamps: [],
-              updateDelay: 300000
+              timestamps: []
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
               '.hydroweb-messstationen_vorhersage')) {
             angular.extend(layers['ch.bafu' +
                 '.hydroweb-messstationen_vorhersage'], {
-              geojsonUrl: basePath + '/src/components/map/temp/' +
-                  'ch.bafu.hydroweb-messstationen_vorhersage.json',
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              chargebale: false,
-              timestamps: [],
-              updateDelay: 300000
+              timestamps: []
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
               '.hydroweb-messstationen_grundwasser')) {
             angular.extend(layers['ch.bafu' +
                 '.hydroweb-messstationen_grundwasser'], {
-              geojsonUrl: basePath + '/src/components/map/temp/' +
-                  'ch.bafu.hydroweb-messstationen_grundwasser.json',
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              chargeable: false,
-              timestamps: [],
-              updateDelay: 300000
+              timestamps: []
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
               '.hydroweb-messstationen_zustand')) {
             angular.extend(layers['ch.bafu' +
                 '.hydroweb-messstationen_zustand'], {
-              geojsonUrl: basePath + '/src/components/map/temp/' +
-                  'ch.bafu.hydroweb-messstationen_zustand.json',
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              chargeable: false,
-              timestamps: [],
-              pdateDelay: 300000
+              timestamps: []
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
               '.hydroweb-messstationen_gefahren')) {
             angular.extend(layers['ch.bafu' +
                 '.hydroweb-messstationen_gefahren'], {
-              geojsonUrl: basePath + '/src/components/map/temp/' +
-                  'ch.bafu.hydroweb-messstationen_gefahren.json',
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              chargeable: false,
-              queryable: false,
-              timestamps: [],
-              updateDelay: 300000
+              timestamps: []
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
               '.hydroweb-warnkarte_national')) {
             angular.extend(layers['ch.bafu.hydroweb-warnkarte_national'], {
-              geojsonUrl: basePath + '/src/components/map/temp/' +
-                  'ch.bafu.hydroweb-warnkarte_national.json',
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              chargeable: false,
-              timestamps: [],
-              updateDelay: 300000
+              timestamps: []
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
               '.hydroweb-warnkarte_regional')) {
             angular.extend(layers['ch.bafu.hydroweb-warnkarte_regional'], {
-              geojsonUrl: basePath + '/src/components/map/temp/' +
-                  'ch.bafu.hydroweb-warnkarte_regional.json',
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              chargeable: false,
-              timestamps: [],
-              updateDelay: 300000
+              timestamps: []
             });
           }
           return layers;
