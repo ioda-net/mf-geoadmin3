@@ -662,7 +662,7 @@
     this.$get = function($http, $q, $rootScope, $translate, $window,
         $timeout, gaBrowserSniffer, gaDefinePropertiesForLayer, gaMapUtils,
         gaNetworkStatus, gaStorage, gaTileGrid, gaUrlUtils,
-        gaStylesFromLiterals) {
+        gaStylesFromLiterals, gaGlobalOptions) {
 
       var Layers = function(wmtsGetTileUrlTemplate,
           layersConfigUrlTemplate, legendUrlTemplate) {
@@ -730,7 +730,9 @@
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              timestamps: []
+              timestamps: [],
+              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
+                '.hydroweb-messstationen_temperatur'].geojsonUrl
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
@@ -740,7 +742,9 @@
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              timestamps: []
+              timestamps: [],
+              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
+                '.hydroweb-messstationen_vorhersage'].geojsonUrl
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
@@ -750,7 +754,9 @@
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              timestamps: []
+              timestamps: [],
+              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
+                '.hydroweb-messstationen_grundwasser'].geojsonUrl
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
@@ -760,7 +766,9 @@
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              timestamps: []
+              timestamps: [],
+              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
+                '.hydroweb-messstationen_zustand'].geojsonUrl
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
@@ -770,7 +778,9 @@
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              timestamps: []
+              timestamps: [],
+              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
+                '.hydroweb-messstationen_gefahren'].geojsonUrl
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
@@ -779,7 +789,9 @@
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              timestamps: []
+              timestamps: [],
+              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
+                '.hydroweb-warnkarte_national'].geojsonUrl
             });
           }
           if (layers.hasOwnProperty('ch.bafu' +
@@ -788,7 +800,9 @@
               attribution: 'OFEV',
               attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
               topics: 'dev',
-              timestamps: []
+              timestamps: [],
+              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
+                '.hydroweb-warnkarte_regional'].geojsonUrl
             });
           }
           return layers;
