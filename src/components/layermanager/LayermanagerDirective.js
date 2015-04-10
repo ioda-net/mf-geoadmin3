@@ -238,6 +238,10 @@
           return !!gaLayers.getLayer(layer.bodId);
         };
 
+        scope.showWarning = function() {
+          $window.alert($translate.instant('third_party_data_warning'));
+        };
+
         scope.displayLayerMetadata = function(evt, layer) {
           var bodId = layer.bodId;
           if (gaLayers.getLayer(bodId)) {

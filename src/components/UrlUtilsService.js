@@ -19,6 +19,14 @@
             return (!!url && url.length > 0 && URL_REGEXP.test(url));
         };
 
+        // Test if an url point to a resource outside the bund network
+        this.isThirdParty = function(url) {
+          if (this.isValid(url)) {
+            return (!/(admin|bgdi)\.ch$/.test(this.getHostname(url)));
+          }
+          return false;
+        };
+
         this.transformIfAgnostic = function(url) {
           if (/^\/\//.test(url)) {
             url = location.protocol + url;
