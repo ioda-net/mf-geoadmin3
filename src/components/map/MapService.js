@@ -721,92 +721,6 @@
           }
         };
 
-        // TODO Remove me
-        var addGeojsonLayer = function(layers) {
-          if (layers.hasOwnProperty('ch.bafu' +
-              '.hydroweb-messstationen_temperatur')) {
-            angular.extend(layers['ch.bafu' +
-                '.hydroweb-messstationen_temperatur'], {
-              attribution: 'OFEV',
-              attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
-              topics: 'dev',
-              timestamps: [],
-              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
-                '.hydroweb-messstationen_temperatur'].geojsonUrl
-            });
-          }
-          if (layers.hasOwnProperty('ch.bafu' +
-              '.hydroweb-messstationen_vorhersage')) {
-            angular.extend(layers['ch.bafu' +
-                '.hydroweb-messstationen_vorhersage'], {
-              attribution: 'OFEV',
-              attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
-              topics: 'dev',
-              timestamps: [],
-              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
-                '.hydroweb-messstationen_vorhersage'].geojsonUrl
-            });
-          }
-          if (layers.hasOwnProperty('ch.bafu' +
-              '.hydroweb-messstationen_grundwasser')) {
-            angular.extend(layers['ch.bafu' +
-                '.hydroweb-messstationen_grundwasser'], {
-              attribution: 'OFEV',
-              attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
-              topics: 'dev',
-              timestamps: [],
-              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
-                '.hydroweb-messstationen_grundwasser'].geojsonUrl
-            });
-          }
-          if (layers.hasOwnProperty('ch.bafu' +
-              '.hydroweb-messstationen_zustand')) {
-            angular.extend(layers['ch.bafu' +
-                '.hydroweb-messstationen_zustand'], {
-              attribution: 'OFEV',
-              attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
-              topics: 'dev',
-              timestamps: [],
-              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
-                '.hydroweb-messstationen_zustand'].geojsonUrl
-            });
-          }
-          if (layers.hasOwnProperty('ch.bafu' +
-              '.hydroweb-messstationen_gefahren')) {
-            angular.extend(layers['ch.bafu' +
-                '.hydroweb-messstationen_gefahren'], {
-              attribution: 'OFEV',
-              attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
-              topics: 'dev',
-              timestamps: [],
-              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
-                '.hydroweb-messstationen_gefahren'].geojsonUrl
-            });
-          }
-          if (layers.hasOwnProperty('ch.bafu' +
-              '.hydroweb-warnkarte_national')) {
-            angular.extend(layers['ch.bafu.hydroweb-warnkarte_national'], {
-              attribution: 'OFEV',
-              attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
-              topics: 'dev',
-              timestamps: [],
-              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
-                '.hydroweb-warnkarte_national'].geojsonUrl
-            });
-          }
-          if (layers.hasOwnProperty('ch.bafu' +
-              '.hydroweb-warnkarte_regional')) {
-            angular.extend(layers['ch.bafu.hydroweb-warnkarte_regional'], {
-              attribution: 'OFEV',
-              attributionUrl: 'http://www.bafu.admin.ch/index.html?lang=fr',
-              topics: 'dev',
-              timestamps: [],
-              geojsonUrl: gaGlobalOptions.ogcproxyUrl + layers['ch.bafu' +
-                '.hydroweb-warnkarte_regional'].geojsonUrl
-            });
-          }
-          return layers;
-        };
 
         /**
          * Load layers for a given topic and language. Return a promise.
@@ -816,8 +730,6 @@
 
           var promise = $http.get(url).then(function(response) {
             layers = response.data;
-            // TODO Remove me
-            layers = addGeojsonLayer(layers);
           }, function(response) {
             layers = undefined;
           });
@@ -981,7 +893,8 @@
             var key, timer;
             var geojsonFormat = new ol.format.GeoJSON();
             var setLayerSource = function() {
-              $http.get(layer.geojsonUrl, {
+              var fullUrl = gaGlobalOptions.ogcproxyUrl + layer.geojsonUrl;
+              $http.get(fullUrl, {
                 cache: false
               }).success(function(data) {
                 olSource.clear();
