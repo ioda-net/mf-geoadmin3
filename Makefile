@@ -264,12 +264,13 @@ test/karma-conf-prod.js: test/karma-conf.mako.js .build-artefacts/python-venv/bi
 node_modules: ANGULAR_JS = angular.js angular.min.js
 node_modules: ANGULAR_TRANSLATE_JS = angular-translate.js angular-translate.min.js 
 node_modules: ANGULAR_TRANSLATE_LOADER_JS = angular-translate-loader-static-files.js angular-translate-loader-static-files.min.js 
+node_modules: LOCALFORAGE = localforage.js localforage.min.js
 node_modules: package.json
 	npm install
 	cp $(addprefix node_modules/angular/,$(ANGULAR_JS)) src/lib/;
 	cp $(addprefix node_modules/angular-translate/dist/,$(ANGULAR_TRANSLATE_JS)) src/lib/;
 	cp $(addprefix node_modules/angular-translate/dist/angular-translate-loader-static-files/,$(ANGULAR_TRANSLATE_LOADER_JS)) src/lib/;
-	cp node_modules/localforage/dist/localforage.min.js src/lib;
+	cp $(addprefix node_modules/localforage/dist/,$(LOCALFORAGE)) src/lib;
 
 
 .build-artefacts/app.js: .build-artefacts/js-files .build-artefacts/closure-compiler/compiler.jar .build-artefacts/externs/angular.js .build-artefacts/externs/jquery.js
