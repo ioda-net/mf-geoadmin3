@@ -23,6 +23,7 @@
   goog.require('ga_geolocation');
   goog.require('ga_rotate');
   goog.require('ga_layermanager');
+  goog.require('ga_layerselector');
   goog.require('ga_tooltip');
   goog.require('ga_swipe');
   goog.require('ga_featuretree');
@@ -80,6 +81,7 @@
     'ga_translation',
     'ga_feedback',
     'ga_layermanager',
+    'ga_layerselector',
     'ga_tooltip',
     'ga_swipe',
     'ga_featuretree',

@@ -1,0 +1,30 @@
+div[ga-layerselector] {
+  position: absolute;
+  width: 300px;
+  height: 75px;
+  bottom: 29px;
+  left: 7px;
+
+  & > div {
+    float: left;
+    cursor: pointer;
+    width: 75px;
+    height: 75px;
+  }
+}
+
+.ch-swisstopo-pixelkarte-farbe {
+  background-image: data-uri('map.png');  
+}
+
+.ch-swisstopo-swissimage {
+  background-image: data-uri('photo.png');  
+}
+
+.ch-swisstopo-pixelkarte-grau {
+  background-image: data-uri('mapbw.png');  
+}
+
+.voidLayer {
+  background-image: data-uri('white.png');  
+}

@@ -146,7 +146,6 @@ itemscope itemtype="http://schema.org/WebApplication"
       <div ng-controller="GaTranslationController">
         <div ga-translation-selector ga-translation-selector-options="options"></div>
       </div>
-      <div ga-background-layer-selector ga-background-layer-selector-map="map"></div>
     </div>
 % endif
 % if device != 'embed':
@@ -165,9 +164,6 @@ itemscope itemtype="http://schema.org/WebApplication"
       </div>
   % if device == 'desktop':
       <div class="navbar-form pull-right hidden-xs">
-        <div id="background-selection">
-          <div ga-background-layer-selector ga-background-layer-selector-map="map"></div>
-        </div>
         <div id="toptools">
           <div ga-fullscreen ga-fullscreen-map="map"></div>&nbsp;&nbsp;
           <a href="" ng-click="globals.feedbackPopupShown = !globals.feedbackPopupShown">
@@ -229,6 +225,8 @@ itemscope itemtype="http://schema.org/WebApplication"
          ga-offline-selector-map="map">
     </div>
 % endif
+    <div ga-layerselector 
+         ga-layerselector-map="map"></div>
 
 % if device != 'embed':
     <div ng-cloak translate-cloak id="footer" class="navbar navbar-fixed-bottom">
@@ -445,7 +443,6 @@ itemscope itemtype="http://schema.org/WebApplication"
                 </label>
                 <label>
                   <span translate>bg_chooser_label</span>
-                  <div ga-background-layer-selector ga-background-layer-selector-map="map"></div>
                 </label>
               </div>
               <hr>
