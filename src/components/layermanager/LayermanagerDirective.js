@@ -239,7 +239,7 @@
         };
 
         scope.showWarning = function() {
-          $window.alert($translate.instant('third_party_data_warning'));
+          $window.alert($translate.instant('external_data_warning'));
         };
 
         scope.displayLayerMetadata = function(evt, layer) {
@@ -287,6 +287,22 @@
             }
           });
         });
+
+        if (!scope.mobile) {
+          // Display the third party data tooltip
+          element.tooltip({
+            selector: '.icon-warning-sign',
+            container: 'body',
+            placement: 'right',
+            title: function(elm) {
+              return $translate.instant('external_data_tooltip');
+            },
+            template: '<div class="tooltip ga-red-tooltip" role="tooltip">' +
+                '<div class="tooltip-arrow"></div><div class="tooltip-inner">' +
+                '</div></div>'
+          });
+        }
+
 
         var removeNonTopicLayers = function(topicId) {
           // Assemble first to not remove from the iterated over array

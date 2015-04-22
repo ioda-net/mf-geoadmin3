@@ -3,7 +3,8 @@
 
   var module = angular.module('ga_attribution_directive', []);
 
-  module.directive('gaAttribution', function($translate, $window) {
+  module.directive('gaAttribution', function($translate, $window,
+      gaBrowserSniffer) {
     return {
       restrict: 'A',
       scope: {
@@ -18,8 +19,21 @@
         scope.map.addControl(control);
 
         element.on('click', '.ga-warning-tooltip', function() {
-          $window.alert($translate.instant('third_party_data_warning'));
+          $window.alert($translate.instant('external_data_warning'));
         });
+
+        if (!gaBrowserSniffer.mobile) {
+          // Display third party data tooltip
+          element.tooltip({
+            selector: '.ga-warning-tooltip',
+            title: function() {
+              return $translate.instant('external_data_tooltip');
+            },
+            template: '<div class="tooltip ga-red-tooltip" role="tooltip">' +
+                '<div class="tooltip-arrow"></div><div class="tooltip-inner">' +
+                '</div></div>'
+          });
+        }
       }
     };
   });
