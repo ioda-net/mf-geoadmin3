@@ -141,7 +141,11 @@ ol: OL_JS = ol.js ol-debug.js
 ol: scripts/ol-geoadmin.json .build-artefacts/ol3 .build-artefacts/ol-requirements-installation.timestamp
 	cd .build-artefacts/ol3; \
 	git reset HEAD --hard; \
+	ifdef ${OL3_VERSION} \
+	git checkout ${OL3_VERSION}; \
+	else \
 	git checkout $(OL3_VERSION); \
+	enif; \
 	git show; \
 	cat ../../scripts/ga-ol3-style.exports >> src/ol/style/style.js; \
 	cat ../../scripts/ga-ol3-tilegrid.exports >> src/ol/tilegrid/tilegrid.js; \
