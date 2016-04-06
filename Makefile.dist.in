@@ -1,0 +1,12 @@
+APACHE_BASE_PATH ?= /
+API_URL ?= //api.geoportal-demo.local
+PUBLIC_URL ?= //api.geoportal-demo.local
+E2E_TARGETURL ?= https://mf-geoadmin3.dev.bgdi.ch
+PUBLIC_URL_REGEXP ?= ^https?:\/\/public\..*\.(bgdi|admin)\.ch\/.*
+ADMIN_URL_REGEXP ?= ^(ftp|http|https):\/\/(.*(\.bgdi|\.geo\.admin)\.ch)
+MAPPROXY_URL ?= 
+SHOP_URL ?= 
+DEPLOY_TARGET ?= 'dev'
+DEFAULT_TOPIC_ID ?= nature
+TRANSLATION_FALLBACK_CODE ?= en
+DEFAULT_EPSG_EXTEND ?= '[420000, 30000, 900000, 350000]'
