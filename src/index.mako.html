@@ -435,7 +435,7 @@ itemscope itemtype="http://schema.org/WebApplication"
              data-toggle="collapse" href="#catalog"
              ga-collapsible-show="globals.catalogShown">
             <i class="fa fa-caret-down"></i>
-            <span>{{topicId | translate}}</span>
+            <span>{{topicTitle}}</span>
   
   % if device == 'desktop':
             <span ga-help="32,37,39" ga-help-options="{showOnHover:true}"></span>
@@ -778,7 +778,7 @@ itemscope itemtype="http://schema.org/WebApplication"
           gaLayersProvider.wmtsGetTileUrlTemplate = '//wmts{s}.geo.admin.ch/1.0.0/{Layer}/default/{Time}/{TileMatrixSet}/{z}/{y}/{x}.{Format}';
           gaLayersProvider.wmtsMapProxyGetTileUrlTemplate =  gaGlobalOptions.mapproxyUrl + '/1.0.0/{Layer}/default/{Time}/{TileMatrixSet}/{z}/{x}/{y}.{Format}';
           gaLayersProvider.terrainTileUrlTemplate = '//3d.geo.admin.ch/1.0.0/{Layer}/default/{Time}/4326';
-          gaLayersProvider.layersConfigUrlTemplate = gaGlobalOptions.resourceUrl + 'layersConfig?lang={Lang}';
+          gaLayersProvider.layersConfigUrlTemplate = gaGlobalOptions.resourceUrl + 'layersConfig/{Lang}LayersConfig';
           gaLayersProvider.legendUrlTemplate = gaGlobalOptions.apiUrl + '/rest/services/all/MapServer/{Layer}/legend?lang={Lang}';
         });
         module.config(function(gaTopicProvider, gaGlobalOptions) {

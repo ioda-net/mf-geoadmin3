@@ -8,7 +8,7 @@ goog.require('ga_topic_service');
   ]);
 
   module.directive('gaTopic',
-      function($rootScope, gaTopic) {
+      function($rootScope, $translate, gaTopic) {
         return {
           restrict: 'A',
           templateUrl: function(element, attrs) {
@@ -25,6 +25,8 @@ goog.require('ga_topic_service');
             scope.setActiveTopic = function(newTopic) {
               scope.activeTopic = newTopic;
             };
+
+            scope.langId = $translate.use();
 
             scope.$watch('activeTopic', function(newTopic) {
               if (newTopic && scope.topics) {

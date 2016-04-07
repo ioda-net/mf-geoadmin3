@@ -3,6 +3,6 @@
      ng-click="setActiveTopic(topic)"
      ng-class="{'ga-topic-active': topic == activeTopic}"
      data-original-title="{{topic.tooltip | translate}}">
-  <div translate>{{::topic.id}}</div>
+  <div>{{::topic.titles[langId]}}</div>
   <div class="ga-topics-sprite ga-topics-sprite-{{::topic.id}}"></div>
 </div>

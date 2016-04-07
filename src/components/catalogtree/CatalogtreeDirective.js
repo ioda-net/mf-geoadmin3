@@ -111,7 +111,8 @@ goog.require('ga_translation_service');
               }
               var labelsOnly = false;
               var url = scope.options.catalogUrlTemplate
-                  .replace('{Topic}', topic.id);
+                  .replace('{Topic}', topic.id)
+                  .replace('{Lang}', lang);
               // If the topic has not changed that means we need to update only
               // labels
               if (lastUrlUsed == url) {
@@ -131,9 +132,6 @@ goog.require('ga_translation_service');
               $http.get(url, {
                 timeout: canceller.promise,
                 cache: true,
-                params: {
-                  'lang': lang
-                }
               }).then(function(response) {
                 var newTree = response.data.results.root;
                 var oldTree = scope.root;

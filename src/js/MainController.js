@@ -189,6 +189,7 @@ goog.require('ga_topic_service');
 
     var onTopicChange = function(event, topic) {
       $scope.topicId = topic.id;
+      $scope.topicTitle = topic.titles[$translate.use()];
 
       // iOS 7 minimal-ui meta tag bug
       if (gaBrowserSniffer.ios) {
@@ -211,7 +212,9 @@ goog.require('ga_topic_service');
     };
 
     gaTopic.loadConfig().then(function() {
-      $scope.topicId = gaTopic.get().id;
+      var topic = gaTopic.get();
+      $scope.topicId = topic.id;
+      $scope.topicTitle = topic.titles[$translate.use()];
 
       if (initWithPrint) {
         $scope.globals.printShown = true;
@@ -227,6 +230,7 @@ goog.require('ga_topic_service');
 
     $rootScope.$on('$translateChangeEnd', function() {
       $scope.langId = $translate.use();
+      $scope.topicTitle = gaTopic.get().titles[$translate.use()];
       var descr = $translate.instant('page_description');
       var title = $translate.instant('page_title');
       $('meta[name=description]').attr('content', descr);
