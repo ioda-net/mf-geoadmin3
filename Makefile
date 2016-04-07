@@ -708,3 +708,7 @@ clean:
 	rm -f src/mobile.html
 	rm -f src/embed.html
 	rm -rf prd
+
+
+.PHONY: dev
+dev: src/index.html src/embed.html src/deps.js src/mobile.html src/style/app.css
