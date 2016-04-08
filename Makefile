@@ -711,4 +711,23 @@ clean:
 
 
 .PHONY: dev
-dev: src/index.html src/embed.html src/deps.js src/mobile.html src/style/app.css
+dev: src/index.html \
+	src/embed.html \
+	src/deps.js \
+	src/mobile.html \
+	src/style/app.css
+
+.PHONY: prod
+prod: devlibs \
+	prd/lib/ \
+	prd/lib/build.js \
+	prd/style/app.css \
+	prd/geoadmin.appcache \
+	prd/index.html \
+	prd/mobile.html \
+	prd/embed.html \
+	prd/img/ \
+	prd/style/font-awesome-4.5.0/font/ \
+	prd/locales/ \
+	prd/checker \
+	prd/robots.txt
