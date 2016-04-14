@@ -51,7 +51,7 @@ goog.require('ga_topic_service');
             bodId = gaLayers.getLayerProperty(bodId, 'parentLayerId') || bodId;
           }
           return (bodId && olLayer.visible && !olLayer.preview &&
-              gaLayers.getLayerProperty(bodId, 'tooltip'));
+              gaLayers.getLayerProperty(bodId, 'queryable'));
         };
 
         var getOlParentLayer = function(l) {
@@ -341,7 +341,7 @@ goog.require('ga_topic_service');
               var size = map.getSize();
               var mapExtent = map.getView().calculateExtent(size);
               var identifyUrl = scope.options.identifyUrlTemplate
-                  .replace('{Topic}', gaTopic.get().id),
+                  .replace('{Topic}', 'demo'),
                   pixel = map.getPixelFromCoordinate(coordinate),
                   layersToQuery = getLayersToQuery(map);
 
@@ -463,21 +463,19 @@ goog.require('ga_topic_service');
                       }
                     }
 
-                    var htmlUrl = scope.options.htmlUrlTemplate
-                                  .replace('{Topic}', gaTopic.get().id)
-                                  .replace('{Layer}', value.layerBodId)
-                                  .replace('{Feature}', value.featureId);
-                    $http.get(htmlUrl, {
-                      timeout: canceler.promise,
-                      params: {
-                        lang: $translate.use(),
-                        mapExtent: mapExtent.join(','),
-                        coord: (coordinate) ? coordinate.join(',') : undefined,
-                        imageDisplay: size[0] + ',' + size[1] + ',96'
-                      }
-                    }).success(function(html) {
-                      showPopup(html, value);
-                    });
+                    var title = gaLayers.getLayerProperty(value.layerBodId, 'label');
+                    var html = '<div id="' + title + '" class="htmlpopup-container">' +
+  '<div class="htmlpopup-header">' +
+    '<span>' + title + '</span>' +
+  '</div>' +
+  '<div class="htmlpopup-content">' +
+      '<table>' +
+    '<tr><td class="cell-left">Name</td>           <td>' + value.properties.name + '</td></tr>' +
+    '<tr><td class="cell-left">Type</td>         <td>' + value.properties.type + '</td></tr>' +
+      '</table>' +
+  '</div>' +
+  '</div>';
+                    showPopup(html, value);
                   }
                 });
               }

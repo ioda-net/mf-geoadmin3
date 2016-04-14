@@ -1349,10 +1349,7 @@ goog.require('ga_urlutils_service');
           return layer.displayInLayerManager &&
                  layer.visible &&
                  layer.bodId &&
-                 gaLayers.getLayerProperty(layer.bodId,
-                                           'queryableAttributes') &&
-                 gaLayers.getLayerProperty(layer.bodId,
-                                           'queryableAttributes').length > 0;
+                 layer.queryable;
         },
         /**
          * Keep only background layers
