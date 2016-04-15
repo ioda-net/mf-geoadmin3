@@ -1,8 +1,8 @@
 APACHE_BASE_PATH ?= /
 API_URL ?= //api.geoportal-demo.local
-PUBLIC_URL ?= //api.geoportal-demo.local
+PUBLIC_URL ?= //api.geoportal-demo.local/files
 E2E_TARGETURL ?= https://mf-geoadmin3.dev.bgdi.ch
-PUBLIC_URL_REGEXP ?= ^https?:\/\/public\..*\.(bgdi|admin)\.ch\/.*
+PUBLIC_URL_REGEXP ?= ^https?:\/\/\..*\.(geoportal-demo)\.local\/.*
 ADMIN_URL_REGEXP ?= ^(ftp|http|https):\/\/(.*(\.bgdi|\.geo\.admin)\.ch)
 MAPPROXY_URL ?= 
 SHOP_URL ?= 
