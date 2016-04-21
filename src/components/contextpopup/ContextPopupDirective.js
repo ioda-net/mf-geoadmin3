@@ -25,7 +25,7 @@ goog.require('ga_permalink');
           link: function(scope, element, attrs) {
             var heightUrl = scope.options.heightUrl;
             var qrcodeUrl = scope.options.qrcodeUrl;
-            var lv03tolv95Url = scope.options.lv03tolv95Url;
+            var lv95tolv03Url = scope.options.lv95tolv03Url;
 
             scope.titleClose = $translate.instant('close');
 
@@ -35,7 +35,7 @@ goog.require('ga_permalink');
             var map = scope.map;
             var view = map.getView();
 
-            var coord21781;
+            var coord2056;
             var popoverShown = false;
 
             var overlay = new ol.Overlay({
@@ -81,12 +81,12 @@ goog.require('ga_permalink');
               var pixel = (event.originalEvent) ?
                   map.getEventPixel(event.originalEvent) :
                   event.pixel;
-              coord21781 = (event.originalEvent) ?
+              coord2056 = (event.originalEvent) ?
                   map.getEventCoordinate(event.originalEvent) :
                   event.coordinate;
-              var coord4326 = ol.proj.transform(coord21781,
-                  'EPSG:21781', 'EPSG:4326');
-              var coord2056 = ol.proj.transform(coord21781,
+              var coord4326 = ol.proj.transform(coord2056,
+                  'EPSG:2056', 'EPSG:4326');
+              var coord21781 = ol.proj.transform(coord2056,
                   'EPSG:21781', 'EPSG:2056');
 
               // recenter on phones
@@ -96,15 +96,15 @@ goog.require('ga_permalink');
                   source: view.getCenter()
                 });
                 map.beforeRender(pan);
-                view.setCenter(coord21781);
+                view.setCenter(coord2056);
               }
 
-              scope.coord21781 = formatCoordinates(coord21781, 1);
+              scope.coord2056 = formatCoordinates(coord2056, 1);
               scope.coord4326 = ol.coordinate.format(coord4326, '{y}, {x}', 5);
               var coord4326String = ol.coordinate.toStringHDMS(coord4326, 3).
                                    replace(/ /g, '');
               scope.coordiso4326 = coord4326String.replace(/N/g, 'N ');
-              scope.coord2056 = formatCoordinates(coord2056, 2) + ' *';
+              scope.coord21781 = formatCoordinates(coord21781, 2) + ' *';
               if (coord4326[0] < 6 && coord4326[0] >= 0) {
                 var utm_31t = ol.proj.transform(coord4326,
                     'EPSG:4326', 'EPSG:32631');
@@ -133,22 +133,22 @@ goog.require('ga_permalink');
 
                 $http.get(heightUrl, {
                   params: {
-                    easting: coord21781[0],
-                    northing: coord21781[1],
+                    easting: coord2056[0],
+                    northing: coord2056[1],
                     elevation_model: gaGlobalOptions.defaultElevationModel
                   }
                 }).success(function(response) {
                   scope.altitude = parseFloat(response.height);
                 });
 
-                $http.get(lv03tolv95Url, {
+                $http.get(lv95tolv03Url, {
                   params: {
-                    easting: coord21781[0],
-                    northing: coord21781[1]
+                    easting: coord2056[0],
+                    northing: coord2056[1]
                   }
                 }).success(function(response) {
-                  coord2056 = response.coordinates;
-                  scope.coord2056 = formatCoordinates(coord2056, 2);
+                  coord21781 = response.coordinates;
+                  scope.coord21781 = formatCoordinates(coord21781, 2);
                 });
 
               });
@@ -159,7 +159,7 @@ goog.require('ga_permalink');
                 hidePopover();
               });
 
-              overlay.setPosition(coord21781);
+              overlay.setPosition(coord2056);
               showPopover();
             };
 
@@ -204,7 +204,7 @@ goog.require('ga_permalink');
 
             // Listen to permalink change events from the scope.
             scope.$on('gaPermalinkChange', function(event) {
-              if (angular.isDefined(coord21781) && popoverShown) {
+              if (angular.isDefined(coord2056) && popoverShown) {
                 updatePopupLinks();
               }
             });
@@ -228,8 +228,8 @@ goog.require('ga_permalink');
 
             function updatePopupLinks() {
               var p = {
-                X: Math.round(coord21781[1], 1),
-                Y: Math.round(coord21781[0], 1)
+                X: Math.round(coord2056[1], 1),
+                Y: Math.round(coord2056[0], 1)
               };
 
               var contextPermalink = gaPermalink.getHref(p);

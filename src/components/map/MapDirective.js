@@ -61,9 +61,9 @@ goog.require('ga_styles_service');
           if (isFinite(easting) && isFinite(northing)) {
             var position = [easting, northing];
             if (ol.extent.containsCoordinate(
-                [2420000, 1030000, 2900000, 1350000], position)) {
+                [420000, 30000, 900000, 350000], position)) {
               position = ol.proj.transform([easting, northing],
-                'EPSG:2056', 'EPSG:21781');
+                'EPSG:21781', 'EPSG:2056');
             }
             view.setCenter(position);
           }

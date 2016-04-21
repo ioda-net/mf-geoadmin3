@@ -61,7 +61,7 @@ goog.provide('ga_query_service');
 
     this.$get = function($http, $log, $q, $translate, $window,
                          gaGlobalOptions) {
-      var msUrl = gaGlobalOptions.apiUrl + '/rest/services/all/MapServer/';
+      var msUrl = gaGlobalOptions.apiUrl + '/rest/services/demo/MapServer/';
       var moment;
       // List of predefined queries by layer
       if (!moment) {

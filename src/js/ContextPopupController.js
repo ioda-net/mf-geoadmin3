@@ -8,7 +8,8 @@ goog.provide('ga_contextpopup_controller');
         $scope.options = {
           heightUrl: gaGlobalOptions.apiUrl + '/rest/services/height',
           qrcodeUrl: gaGlobalOptions.apiUrl + '/qrcodegenerator',
-          lv03tolv95Url: 'https://geodesy.geo.admin.ch/reframe/lv03tolv95'
+          lv03tolv95Url: 'https://geodesy.geo.admin.ch/reframe/lv03tolv95',
+          lv95tolv03Url: 'https://geodesy.geo.admin.ch/reframe/lv95tolv03'
         };
 
       });
