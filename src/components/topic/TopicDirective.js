@@ -27,6 +27,9 @@ goog.require('ga_topic_service');
             };
 
             scope.langId = $translate.use();
+            $rootScope.$on('$translateChangeEnd', function() {
+              scope.langId = $translate.use();
+            });
 
             scope.$watch('activeTopic', function(newTopic) {
               if (newTopic && scope.topics) {
