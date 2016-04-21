@@ -230,7 +230,9 @@ goog.require('ga_topic_service');
 
     $rootScope.$on('$translateChangeEnd', function() {
       $scope.langId = $translate.use();
-      $scope.topicTitle = gaTopic.get().titles[$translate.use()];
+      gaTopic.loadConfig().then(function() {
+        $scope.topicTitle = gaTopic.get().titles[$translate.use()];
+      });
       var descr = $translate.instant('page_description');
       var title = $translate.instant('page_title');
       $('meta[name=description]').attr('content', descr);
